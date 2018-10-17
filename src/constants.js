@@ -1,2 +1,0 @@
-export const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
-export const FETCH_DOG_DATA = 'FETCH_DOG_DATA';
