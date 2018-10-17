@@ -1,32 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import CardList from '../components/CardList';
 import ErrorBoundary from '../components/ErrorBoundary';
-import doggos from '../doggos';
+
 import './App.css';
 
+import { setSearchValue, fetchDogData } from '../actions';
+
+
+
 class App extends Component {
-	constructor() {
-		super();
-		this.state = {
-			doggos: [],
-			searchValue: ''
-		}
+	constructor(props) {
+		super(props);
 	}
 	
 	componentDidMount() {
 		// Set dog data into state.
-		this.setState({ doggos });
-	}
-
-	onSearchChange = (event) => {
-		// Grab search value from event, set to state.
-		this.setState({ searchValue: event.target.value });
+		this.props.fetchDogs();
 	}
 
 	render() {
-		const { doggos, searchValue } = this.state;
+		const { searchValue, onSearchChange, doggos } = this.props;
 		
 		// Filter dogs list via search term entered.
 		const filteredDoggos = doggos.filter(doggo => {
@@ -39,7 +36,7 @@ class App extends Component {
 				<div className="tc">
 					<header id="header">
 						<h1 className="f1">Doggos</h1>
-						<SearchBox searchChange={this.onSearchChange} />
+						<SearchBox searchChange={onSearchChange} />
 					</header>
 					<Scroll>
 						<ErrorBoundary>
@@ -51,4 +48,18 @@ class App extends Component {
 	}
 }
 
-export default App;
+// Add Redux state into component props
+const mapStateToProps = (state) => {
+	return {
+		searchValue: state.searchDogs.searchValue,
+		doggos: state.dogsData.doggos
+	}
+}
+
+// Add Redux actions into component props
+const mapDispatchToProps = (dispatch) => ({
+	onSearchChange: (event) => dispatch(setSearchValue(event.target.value)),
+	fetchDogs: () => dispatch(fetchDogData())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
