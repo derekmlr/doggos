@@ -13,9 +13,6 @@ import { setSearchValue, fetchDogData } from '../actions';
 
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-	}
 	
 	componentDidMount() {
 		// Set dog data into state.
