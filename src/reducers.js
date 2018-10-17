@@ -1,6 +1,5 @@
 import { SET_SEARCH_VALUE, FETCH_DOG_DATA } from './constants';
 
-
 // Search Dogs Reducer
 const initialSearchState = {
 	searchValue: ''

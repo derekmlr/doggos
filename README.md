@@ -1,4 +1,6 @@
-A simple list filtering app to demonstrate the React library.
+A simple list filtering app to demonstrate the React and Redux libraries.
+
+*Demo*: [http://derekmlr.com/doggos/](http://derekmlr.com/doggos/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -29,6 +31,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
 
-### `npm run eject`
+### `npm run deploy`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Deploys the production-ready app hosted on Github Pages. First run `npm run build` to create the build that it will deploy to the master branch.
