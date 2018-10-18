@@ -1,12 +1,14 @@
 import React from 'react';
 import Card from './Card';
 
+import './CardList.css';
+
 const CardList = ({ doggos }) => {
 	if (!doggos) {
 		throw new Error('No dogs were found. :(');
 	}
 	return (
-		<div>
+		<div className="CardList-container">
 			{
 				doggos.map((dog, i) => {
 					return (

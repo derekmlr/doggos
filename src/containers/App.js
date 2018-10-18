@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll';
 import CardList from '../components/CardList';
 import ErrorBoundary from '../components/ErrorBoundary';
 
@@ -31,15 +30,13 @@ class App extends Component {
 			<h1>Loading...</h1> :
 			(
 				<div className="tc">
-					<header id="header">
+					<header className="App-header">
 						<h1 className="f1">Doggos</h1>
 						<SearchBox searchChange={onSearchChange} />
 					</header>
-					<Scroll>
-						<ErrorBoundary>
-							<CardList doggos={filteredDoggos} />
-						</ErrorBoundary>
-					</Scroll>
+					<ErrorBoundary>
+						<CardList doggos={filteredDoggos} />
+					</ErrorBoundary>
 				</div>
 			);
 	}
